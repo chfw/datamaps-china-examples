@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><meta charset='utf-8'>
+<body>
+Here is an example on how to use <a href="https://github.com/markmarkoh/datamaps/blob/master/dist/datamaps.chn.js">datamaps.chn.js</a> done by Mark. 	
+<script src="http://datamaps.github.io/scripts/d3.min.js"></script>
+<script src="http://datamaps.github.io/scripts/topojson.js"></script>
+<script src="datamaps.chn.js"></script>
+<div id="container" style="position: relative; width: 1200px; height: 800px;"></div>
+<script>
+  var map = new Datamap({element: document.getElementById('container'), scope: 'chn',
+    setProjection: function(element, options){
+      var projection = d3.geo.conicConformal()
+       .rotate([-120, 0])
+       .center([0, 38])
+       .parallels([29.5, 45.5]).scale(1000)
+       .translate([1200 / 2, 800 / 2]).precision(.1);
+       path = d3.geo.path().projection(projection);
+       return {path:path, projection:projection};
+    }
+  });
+</script>
+</body>
+</html>
